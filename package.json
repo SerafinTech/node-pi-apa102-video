@@ -1,0 +1,11 @@
+{
+  "name": "pi-apa102-video",
+  "version": "0.1.0",
+  "description": "Play videos on pi with apa102 LED array",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

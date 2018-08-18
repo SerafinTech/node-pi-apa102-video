@@ -5,6 +5,7 @@ var n = 0
 led = new Apa102spi(24*8, 100)
 
 setInterval(() => {
+  console.log(n)
   led.setLedColor(n, 31, 0, 0, 255)
   if(n === 0) {
     led.setLedColor(24*8-1, 0, 0, 0, 0)

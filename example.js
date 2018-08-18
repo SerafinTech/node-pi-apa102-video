@@ -2,7 +2,7 @@ const Apa102spi = require('apa102-spi')
 
 var n = 0
 
-led = new Apa102spi(24*8, 16)
+led = new Apa102spi(24*8, 100)
 
 setter()
 
@@ -12,7 +12,7 @@ function setter() {
   if(n === 0) {
     led.setLedColor((24*8)-1, 30, 0, 0, 0)
   } else {
-    led.setLedColor(n, 0, 0, 0, 0)
+    led.setLedColor(n - 1, 0, 0, 0, 0)
   }
 
   n++

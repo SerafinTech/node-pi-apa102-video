@@ -8,8 +8,6 @@ led = new Apa102spi(24*8, 16)
 
 setter()
 
-
-
 function setter() {
   console.log(n)
   led.setLedColor(n, 30, 0, 0, 255)
@@ -23,7 +21,6 @@ function setter() {
   if(n >= (24*8)) {
     n = 0
   }
-
   led.sendLeds()
-  setTimeout(setter, 125)
+  setTimeout(() => {setter()}, 125)
 }

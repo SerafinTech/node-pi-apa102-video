@@ -2,7 +2,7 @@ const Apa102spi = require('apa102-spi')
 
 var n = 0
 
-led = new Apa102spi(24*8+2, 100)
+led = new Apa102spi(24*8+2, 16)
 
 setter()
 
@@ -21,5 +21,5 @@ function setter() {
     n = 0
   }
   led.sendLeds()
-  setTimeout(() => {setter()}, 250)
+  setTimeout(() => {setter()}, 5)
 }

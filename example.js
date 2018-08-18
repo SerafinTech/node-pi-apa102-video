@@ -14,12 +14,12 @@ function setter() {
   } else {
     led.setLedColor(n - 1, 0, 0, 0, 0)
   }
-  var bn = 24*8*4+4
+  var bn = 24*8*4+8
   console.log(n, led.writeBuffer[bn], led.writeBuffer[bn+1], led.writeBuffer[bn+2], led.writeBuffer[bn+3])
   n++
   if(n >= (24*8)) {
     n = 0
   }
   led.sendLeds()
-  setTimeout(() => {setter()}, 5)
+  setTimeout(() => {setter()}, 20)
 }

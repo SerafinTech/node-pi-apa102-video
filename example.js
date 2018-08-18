@@ -1,5 +1,3 @@
-import { setTimeout } from 'timers';
-
 const Apa102spi = require('apa102-spi')
 
 var n = 0

@@ -10,11 +10,11 @@ setInterval(() => {
   if(n === 0) {
     led.setLedColor(24*8-1, 0, 0, 0, 0)
   } else {
-    led.setLedColor(n-1, 0, 0, 0, 0)
+    led.setLedColor(n, 0, 0, 0, 0)
   }
 
   n++
-  if(n >= 24*8 - 1) {
+  if(n >= (24*8)) {
     n = 0
   }
 

@@ -14,7 +14,8 @@ function setter() {
   } else {
     led.setLedColor(n - 1, 0, 0, 0, 0)
   }
-  console.log(n, led.writeBuffer[n], led.writeBuffer[n+1], led.writeBuffer[n+2], led.writeBuffer[n+3])
+  var bn = n*4+4
+  console.log(n, led.writeBuffer[bn], led.writeBuffer[bn+1], led.writeBuffer[bn+2], led.writeBuffer[bn+3])
   n++
   if(n >= (24*8)) {
     n = 0

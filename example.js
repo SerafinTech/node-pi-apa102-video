@@ -2,7 +2,7 @@ const Apa102spi = require('apa102-spi')
 
 var n = 0
 
-led = new Apa102spi(24*8, 8)
+led = new Apa102spi(24*8, 16)
 
 
 

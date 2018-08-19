@@ -74,7 +74,7 @@ class Apa102Video {
       this.ledDriver.sendLeds()
     }
     catch(err) {
-      console.log(err)
+      //console.log('invalid BMP')
     }
   }
 

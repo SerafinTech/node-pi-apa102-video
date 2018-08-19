@@ -14,4 +14,4 @@ const matrix = [
 
 const player = new LedVideo(matrix, 16, 10)
 
-player.play('../whiteStripesFellInLoveWithAGirl.mp4')
+player.play(process.argv[2])

@@ -58,7 +58,7 @@ class Apa102Video {
   showFrame(cFrame) {
     cFrame.scan(0, 0, cFrame.bitmap.width, cFrame.bitmap.height, (x, y, idx) => {
       if (x < this.matrix[0].length && y < this.matrix.length) {
-        if this.matrix[y][x] !== -1) {
+        if (this.matrix[y][x] !== -1) {
           this.ledDriver.setLedColor(this.matrix[y][x], this.brightness, gammaCorrection(cFrame.bitmap.data[idx]), gammaCorrection(cFrame.bitmap.data[idx+1]), gammaCorrection(cFrame.bitmap.data[idx+2]))
         }
       }

@@ -47,27 +47,23 @@ class Apa102Video {
         persistent: true
       })
 
-      watcher.on('add', (imagePath) => {
-        try {
-          var img = new Jimp(imagePath, (err, image) => {
-            if (err) {
-              console.log(err)
-            } else {
-              fs.remove(imagePath)
-              this.showFrame(image)
+      watcher.on('add', (imagePath) => { 
+        var img = new Jimp(imagePath, (err, image) => {
+          if (err) {
+            console.log(err)
+          } else {
+            fs.remove(imagePath)
+            this.showFrame(image)
 
-            }
-          })
-        }
-        catch(err) {
-          console.log(err)
-        }  
+          }
+        })
       })
 
     })
   }
 
   showFrame(cFrame) {
+    console.log(cFrame.bitmap.width, cFrame.bitmap.height)
     cFrame.scan(0, 0, cFrame.bitmap.width, cFrame.bitmap.height, (x, y, idx) => {
       if (x < this.matrix[0].length && y < this.matrix.length) {
         if (this.matrix[y][x] !== -1) {

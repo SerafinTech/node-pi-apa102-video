@@ -26,6 +26,9 @@ class Apa102Video {
   
   play(video) {
     this.disk.create(10, (err, mount) => {
+      if(err) {
+        console.log(err)
+      }
       this.diskmnt = mount
       ffmpeg(video)
         .noAudio()

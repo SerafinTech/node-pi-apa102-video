@@ -52,8 +52,7 @@ class Apa102Video {
           if (err) {
             console.log(err)
           } else {
-            //fs.remove(imagePath)
-            this.showFrame(image)
+            this.showFrame(image, imagePath)
 
           }
         })
@@ -62,7 +61,7 @@ class Apa102Video {
     })
   }
 
-  showFrame(cFrame) {
+  showFrame(cFrame, imagePath) {
     try {   
       cFrame.scan(0, 0, cFrame.bitmap.width, cFrame.bitmap.height, (x, y, idx) => {
         if (x < this.matrix[0].length && y < this.matrix.length) {
@@ -72,6 +71,7 @@ class Apa102Video {
         }
       })
       this.ledDriver.sendLeds()
+      fs.remove(imagePath)
     }
     catch(err) {
       //console.log('invalid BMP')

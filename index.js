@@ -47,7 +47,7 @@ class Apa102Video {
             //console.log(err)
           } else {
             fs.remove(imagePath)
-            self.showFrame(image)        
+            this.showFrame(image)        
           }
         })
       })
@@ -63,7 +63,7 @@ class Apa102Video {
         }
       }
     })
-    self.ledDriver.sendLeds()
+    this.ledDriver.sendLeds()
   }
 
   blank() {

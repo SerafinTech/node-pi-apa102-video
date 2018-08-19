@@ -21,6 +21,8 @@ class Apa102Video {
       })
     })
 
+    console.log('Led strip length:', this.ledLength)
+
     this.ledDriver = new Apa102spi(this.ledLength+2, freqDiv)
   }
   
@@ -39,18 +41,21 @@ class Apa102Video {
           this.blank()
           console.log('Video Ended')
         })
+        .save(this.diskmnt+'/'+'image_%0d.bmp')
       const watcher = chokidar.watch(this.diskmnt, {
         ignored: /(^|[\/\\])\../,
         persistent: true
       })
 
       watcher.on('add', (imagePath) => {
+        console.log('New Frame')
         var img = new Jimp(imagePath, (err, image) => {
           if (err) {
-            //console.log(err)
+            console.log(err)
           } else {
             fs.remove(imagePath)
-            this.showFrame(image)        
+            this.showFrame(image)
+
           }
         })
       })

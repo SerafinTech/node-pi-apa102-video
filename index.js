@@ -48,7 +48,6 @@ class Apa102Video {
       })
 
       watcher.on('add', (imagePath) => {
-        console.log('New Frame')
         var img = new Jimp(imagePath, (err, image) => {
           if (err) {
             console.log(err)

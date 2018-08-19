@@ -70,7 +70,7 @@ class Apa102Video {
           }
         }
         if (x == cFrame.bitmap.width - 1 && y == cFrame.bitmap.height - 1) {
-          fs.remove(imagePath)
+          //fs.remove(imagePath)
           this.ledDriver.sendLeds()
         }
       })      

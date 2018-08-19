@@ -69,9 +69,11 @@ class Apa102Video {
             this.ledDriver.setLedColor(this.matrix[y][x], this.brightness, gammaCorrection(cFrame.bitmap.data[idx]), gammaCorrection(cFrame.bitmap.data[idx+1]), gammaCorrection(cFrame.bitmap.data[idx+2]))
           }
         }
-      })
-      this.ledDriver.sendLeds()
-      fs.remove(imagePath)
+        if (x == cFrame.bitmap.width - 1 && y == cFrame.bitmap.height - 1) {
+          fs.remove(imagePath)
+          this.ledDriver.sendLeds()
+        }
+      })      
     }
     catch(err) {
       //console.log('invalid BMP')

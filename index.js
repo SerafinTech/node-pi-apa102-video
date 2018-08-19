@@ -52,7 +52,7 @@ class Apa102Video {
           if (err) {
             console.log(err)
           } else {
-            fs.remove(imagePath)
+            //fs.remove(imagePath)
             this.showFrame(image)
 
           }

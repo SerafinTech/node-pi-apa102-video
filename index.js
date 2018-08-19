@@ -38,7 +38,7 @@ class Apa102Video {
         .size((this.matrix[0].length).toString() + 'x' + (this.matrix.length).toString())
         .on('end', () => {
           this.disk.delete(this.diskmnt)
-          this.blank()
+          setTimeout(() => {this.blank()}, 250)
           console.log('Video Ended')
         })
         .save(this.diskmnt+'/'+'image_%0d.bmp')
@@ -70,7 +70,7 @@ class Apa102Video {
           }
         }
         if (x == cFrame.bitmap.width - 1 && y == cFrame.bitmap.height - 1) {
-          //fs.remove(imagePath)
+          fs.remove(imagePath)
           this.ledDriver.sendLeds()
         }
       })      

@@ -48,15 +48,20 @@ class Apa102Video {
       })
 
       watcher.on('add', (imagePath) => {
-        var img = new Jimp(imagePath, (err, image) => {
-          if (err) {
-            console.log(err)
-          } else {
-            fs.remove(imagePath)
-            this.showFrame(image)
+        try {
+          var img = new Jimp(imagePath, (err, image) => {
+            if (err) {
+              console.log(err)
+            } else {
+              fs.remove(imagePath)
+              this.showFrame(image)
 
-          }
-        })
+            }
+          })
+        }
+        catch(err) {
+          console.log(err)
+        }  
       })
 
     })

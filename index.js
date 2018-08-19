@@ -70,10 +70,11 @@ class Apa102Video {
           }
         }
         if (x == cFrame.bitmap.width - 1 && y == cFrame.bitmap.height - 1) {
-          process.nextTick(() => {fs.remove(imagePath)})
+          
           this.ledDriver.sendLeds()
         }
-      })      
+      })
+      process.nextTick(() => {fs.remove(imagePath)})      
     }
     catch(err) {
       //console.log('invalid BMP')

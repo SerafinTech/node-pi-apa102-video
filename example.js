@@ -16,4 +16,7 @@ const audioTrack = new AudioPlayer(process.argv[3])
 const player = new LedVideo(matrix, 100, 20)
 
 player.play(process.argv[2])
-audioTrack.play()
+
+player.on('videoStarted', () => {
+  audioTrack.play()
+})

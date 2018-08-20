@@ -4,15 +4,17 @@ const ramdisk = require('node-ramdisk')
 const fs = require('fs-extra')
 const ffmpeg = require('fluent-ffmpeg')
 const chokidar = require('chokidar')
+const EventEmitter = require('events').EventEmitter
 
-class Apa102Video {
+class Apa102Video extends EventEmitter{
   constructor(matrix, freqDiv, brightness) {
+    super()
     this.matrix = matrix
     this.brightness = brightness
     this.disk = ramdisk('temp_img')
     this.diskmnt = null
     this.ledLength = 0
-
+    this.firstFrame = true
     this.matrix.forEach((y,yi) => {
       y.forEach((x, xi) => {
         if(matrix[yi,xi] !== -1) {
@@ -27,6 +29,7 @@ class Apa102Video {
   }
   
   play(video) {
+    this.firstFrame = true
     this.disk.create(10, (err, mount) => {
       if(err) {
         console.log(err)
@@ -49,6 +52,10 @@ class Apa102Video {
       })
 
       watcher.on('add', (imagePath) => { 
+        if(this.firstFrame) {
+          this.emit('videoStarted')
+          this.firstFrame = false
+        }
         var img = new Jimp(imagePath, (err, image) => {
           if (err) {
             console.log(err)

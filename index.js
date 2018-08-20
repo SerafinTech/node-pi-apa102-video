@@ -36,6 +36,7 @@ class Apa102Video {
         .noAudio()
         .native()
         .size((this.matrix[0].length).toString() + 'x' + (this.matrix.length).toString())
+        .outputOptions('-sws_flags area')
         .on('end', () => {
           this.disk.delete(this.diskmnt)
           setTimeout(() => {this.blank()}, 250)

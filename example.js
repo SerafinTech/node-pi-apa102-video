@@ -1,5 +1,5 @@
 const LedVideo = require('./index.js')
-
+const AudioPlayer = require('player')
 
 const matrix = [
   [191,190,189,188,187,186,185,184,183,182,181,180,179,178,177,176,175,174,173,172,171,170,169,168],
@@ -11,7 +11,9 @@ const matrix = [
   [47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24],
   [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
 ]
+const audioTrack = new AudioPlayer(process.argv[3])
 
 const player = new LedVideo(matrix, 100, 10)
 
 player.play(process.argv[2])
+audioTrack.play()

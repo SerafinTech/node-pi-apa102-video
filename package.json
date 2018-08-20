@@ -15,6 +15,6 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^3.0.0",
     "apa102-spi": "0.0.4",
-    "player": "0.6.1"
+    "player": "SerafinTech/player"
   }
 }

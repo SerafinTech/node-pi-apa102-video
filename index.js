@@ -38,7 +38,6 @@ class Apa102Video extends EventEmitter{
       ffmpeg(video)
         .noAudio()
         .native()
-        .size((this.matrix[0].length).toString() + 'x' + (this.matrix.length).toString())
         .videoFilters(
           {
             filter: 'scale',

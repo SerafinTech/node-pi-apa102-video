@@ -1,5 +1,5 @@
 const LedVideo = require('./index.js')
-const AudioPlayer = require('player')
+const AudioPlayer = require('serafintech-player')
 
 const matrix = [
   [191,190,189,188,187,186,185,184,183,182,181,180,179,178,177,176,175,174,173,172,171,170,169,168],

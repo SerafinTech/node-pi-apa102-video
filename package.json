@@ -13,8 +13,8 @@
     "chokidar": "^2.0.4",
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^3.0.0",
-    "serafintech-jimp": "0.3.6",
     "node-ramdisk": "^1.2.2",
-    "player": "github:SerafinTech/player#master"
+    "serafintech-jimp": "0.3.6",
+    "serafintech-player": "^0.6.1"
   }
 }

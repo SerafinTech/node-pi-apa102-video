@@ -44,11 +44,10 @@ class Apa102Video extends EventEmitter{
             options: {
               w: this.matrix[0].length,
               h: this.matrix.length,
-              flags: 'lanczos'
+              flags: 'neighbor'
             }
           }
         )
-        .inputOptions('-sws_flags lanczos')
         .on('end', () => {
           this.disk.delete(this.diskmnt)
           setTimeout(() => {this.blank()}, 250)

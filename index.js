@@ -38,8 +38,9 @@ class Apa102Video extends EventEmitter{
       ffmpeg(video)
         .noAudio()
         .native()
+        .videoFilters()
         .size((this.matrix[0].length).toString() + 'x' + (this.matrix.length).toString())
-        .outputOptions('-sws_flags lanczos')
+        .inputOptions('-sws_flags lanczos')
         .on('end', () => {
           this.disk.delete(this.diskmnt)
           setTimeout(() => {this.blank()}, 250)

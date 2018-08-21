@@ -44,7 +44,7 @@ class Apa102Video extends EventEmitter{
             options: {
               w: this.matrix[0].length,
               h: this.matrix.length,
-              flags: 'gauss'
+              flags: 'area'
             }
           }
         )

@@ -39,6 +39,16 @@ class Apa102Video extends EventEmitter{
         .noAudio()
         .native()
         .size((this.matrix[0].length).toString() + 'x' + (this.matrix.length).toString())
+        .videoFilters(
+          {
+            filter: 'scale',
+            options: {
+              w: this.matrix[0].length,
+              h: this.matrix.length,
+              flags: 'lanczos'
+            }
+          }
+        )
         .inputOptions('-sws_flags lanczos')
         .on('end', () => {
           this.disk.delete(this.diskmnt)

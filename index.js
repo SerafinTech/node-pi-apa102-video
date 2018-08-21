@@ -45,6 +45,9 @@ class Apa102Video extends EventEmitter{
           setTimeout(() => {this.blank()}, 250)
           console.log('Video Ended')
         })
+        .on('start', (commandLine) => {
+          console.log(commandLine)
+        })
         .save(this.diskmnt+'/'+'image_%0d.bmp')
       const watcher = chokidar.watch(this.diskmnt, {
         ignored: /(^|[\/\\])\../,

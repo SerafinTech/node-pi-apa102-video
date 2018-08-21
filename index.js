@@ -71,8 +71,8 @@ class Apa102Video extends EventEmitter{
           if (err) {
             console.log(err)
           } else {
-            this.showFrame(image, imagePath)
-            setTimeout(() => {fs.remove(imagePath)}, 100)
+            this.showFrame(image)
+            setTimeout(() => {fs.remove(imagePath)}, 250)
           }
         })
       })

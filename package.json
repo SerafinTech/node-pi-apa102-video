@@ -1,20 +1,35 @@
 {
   "name": "pi-apa102-video",
-  "version": "0.1.0",
-  "description": "Play videos on pi with apa102 LED array",
-  "main": "index.js",
+  "version": "0.2.0",
+  "description": "Play videos and animations on apa102 LED array and Raspberry Pi",
+  "main": "apa102video.js",
+  "keywords": [
+    "apa102",
+    "led",
+    "ffmpeg",
+    "rpi",
+    "raspberry",
+    "pi",
+    "video"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "bugs": {
+    "mail": "jtserafin@gmail.com",
+    "url": "https://github.com/SerafinTech/node-pi-apa102-video/issues"
+  },
+  "repository": "https://github.com/SerafinTech/node-pi-apa102-video",
+  "author": "Jason Serafin",
+  "license": "MIT",
   "dependencies": {
     "apa102-spi": "0.0.4",
     "chokidar": "^2.0.4",
     "fluent-ffmpeg": "^2.1.2",
-    "fs-extra": "^3.0.0",
+    "fs-extra": "^7.0.0",
+    "lame": "^1.2.4",
     "node-ramdisk": "^1.2.2",
-    "serafintech-jimp": "0.3.6",
-    "serafintech-player": "^0.6.1"
+    "serafintech-jimp": "^0.3.6",
+    "speaker": "^0.4.1"
   }
 }

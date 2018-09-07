@@ -7,9 +7,10 @@ const chokidar = require('chokidar')
 const EventEmitter = require('events').EventEmitter
 const lame = require('lame')
 const speaker = require('speaker')
+const gif = require('omggif')
 
 const defaultOptions = {
-  freqDivider: 100,
+  freqDivider: 40,
   brightness: 8,
   gamma: 2.6,
   ramdiskSize: 10
@@ -44,7 +45,8 @@ class Apa102video extends EventEmitter {
       this.speaker = new speaker(lameFormat)
       this.lameStream.pipe(this.speaker)
     })
-
+    
+    //Watch ramdisk for new images
     const startWatch = () => {
       this.watcher = chokidar.watch(this.diskmnt, {
         ignored: /(^|[\/\\])\../,
@@ -116,6 +118,80 @@ class Apa102video extends EventEmitter {
     videoPlayer.run()
 
     return videoPlayer
+  }
+
+  // Play video
+  playCam(device, options = {}) {
+    let videoOptions = {}
+    Object.assign(videoOptions, defaultVideoOptions, options)
+
+    let videoPlayer = ffmpeg(device)
+    
+    videoPlayer
+      .inputOptions([
+        '-f v4l2',
+        '-input_format mjpeg'
+      ])
+      .outputOptions('-vf scale=' + this.matrix[0].length.toString()+':'+this.matrix.length.toString())
+      .on('start', (commandLine) => {
+        //console.log(commandLine)
+        this.triggerSound = videoOptions.sound
+      })
+      .on('progress', (progress) => {
+        this.progress = progress
+      })
+      .output(this.diskmnt+'/'+'image_%0d.bmp')
+
+      if(videoOptions.keepAspect) {
+        videoPlayer.autopad()
+      }
+
+      if(videoOptions.rawSound) {
+        videoPlayer
+          .output(new speaker())
+          .format('s16le')
+      }
+
+    videoPlayer._inputs[0].isStream = true  
+      
+    videoPlayer.run()
+
+    return videoPlayer
+  }
+
+  //Play a gif on a loop
+  playGif(gifFilename) {
+    this.playingGif = true
+    fs.readFile(gifFilename)
+      .then(file => { 
+        const gifObj = new gif.GifReader(file)
+        const gifData = Buffer.alloc(gifObj.width * gifObj.height * 4)
+        const gifNumFrames = gifObj.numFrames()
+        let gifFrames = []
+
+        for (var fn = 0; fn < gifNumFrames; fn++) {
+          gifObj.decodeAndBlitFrameRGBA(fn, gifData)
+          gifFrames[fn] = new jimp({data: gifData, width: gifObj.width, height: gifObj.height})
+          gifFrames[fn].resize(this.matrix[0].length, this.matrix.length)
+          gifFrames[fn].delay = gifObj.frameInfo(fn).delay 
+        }
+
+        const playNextGifImage = (n) => {
+          this.showFrame(gifFrames[n])         
+          setTimeout(() => {
+            n++
+            if(n > gifNumFrames - 1) { n = 0}
+            if (this.playingGif) {
+              playNextGifImage(n)
+            }
+          }, gifFrames[n].delay * 10);
+        }      
+        playNextGifImage(0)
+      })  
+  }
+
+  stopGif() {
+    this.playingGif = false
   }
 
   //New frame handling

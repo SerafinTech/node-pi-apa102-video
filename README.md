@@ -26,8 +26,16 @@ $ sudo apt-get install youtube-dl
 
 Look up online on how to wire APA102 (Dotstar) LEDs to the Raspberry Pi.  I suggest using a breadboard and a level shifter to translate the 3.3v of the Pi to 5v of the LED strip/matrix. I have used the 74AHCT125 successfully.
 
+### Raspberry Pi setup
+
+Set audio output to use the 3.5mm line out jack
+
+```sh
+$ amixer cset numid=3 1
+```
+
 ### Programming
-`sudo` must be used to acces the SPI pins on the Raspberry Pi
+`sudo` must be used to access the SPI pins on the Raspberry Pi
 
 This is a `Promise` based library.
 
@@ -36,7 +44,7 @@ A 2-dimensional array is passed to the constructor to setup the layout of the LE
 For example:
 
 ```javascript
-const apa102video = require('./apa102video')
+const apa102video = require('pi-apa102-video')
 
 const layoutMatrix = [
   [0, 1, 2],

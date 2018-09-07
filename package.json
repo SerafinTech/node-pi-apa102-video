@@ -1,6 +1,6 @@
 {
   "name": "pi-apa102-video",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Play videos and animations on apa102 LED array and Raspberry Pi",
   "main": "apa102video.js",
   "keywords": [
@@ -29,6 +29,7 @@
     "fs-extra": "^7.0.0",
     "lame": "^1.2.4",
     "node-ramdisk": "^1.2.2",
+    "omggif": "^1.0.9",
     "serafintech-jimp": "^0.3.6",
     "speaker": "^0.4.1"
   }
